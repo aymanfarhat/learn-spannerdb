@@ -65,12 +65,10 @@ class SpannerInitializer:
         # Process index files
         for index_file in os.listdir(index_dir):
             if index_file.endswith('.sql'):
-                table_name = index_file.split('_')[0]  # Assuming format: tablename_indexname.sql
-                if table_name in table_definitions:
-                    index_path = os.path.join(index_dir, index_file)
-                    table_definitions[table_name]['indexes'].append(
-                        self.read_sql_file(index_path)
-                    )
+                index_path = os.path.join(index_dir, index_file)
+                table_definitions[table_name]['indexes'].append(
+                    self.read_sql_file(index_path)
+                )
 
         return table_definitions
 
