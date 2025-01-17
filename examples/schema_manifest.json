@@ -1,0 +1,413 @@
+{
+  "tables": [
+    {
+      "table": "Object",
+      "schema": [
+        {
+          "name": "id",
+          "type": "STRING",
+          "length": 36,
+          "nullable": false
+        },
+        {
+          "name": "entity_type",
+          "type": "STRING",
+          "length": 50,
+          "nullable": true
+        },
+        {
+          "name": "entity_id",
+          "type": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "parent_id",
+          "type": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "length": 255,
+          "nullable": true
+        },
+        {
+          "name": "normalized_name",
+          "type": "STRING",
+          "length": 255,
+          "nullable": true
+        },
+        {
+          "name": "permalink",
+          "type": "STRING",
+          "length": 255,
+          "nullable": true
+        },
+        {
+          "name": "category_code",
+          "type": "STRING",
+          "length": 50,
+          "nullable": true
+        },
+        {
+          "name": "status",
+          "type": "STRING",
+          "length": 50,
+          "nullable": true
+        },
+        {
+          "name": "founded_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "closed_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "domain",
+          "type": "STRING",
+          "length": 255,
+          "nullable": true
+        },
+        {
+          "name": "homepage_url",
+          "type": "STRING",
+          "length": 512,
+          "nullable": true
+        },
+        {
+          "name": "twitter_username",
+          "type": "STRING",
+          "length": 50,
+          "nullable": true
+        },
+        {
+          "name": "logo_url",
+          "type": "STRING",
+          "length": 512,
+          "nullable": true
+        },
+        {
+          "name": "logo_width",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "logo_height",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "short_description",
+          "type": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "description",
+          "type": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "overview",
+          "type": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "tag_list",
+          "type": "STRING",
+          "nullable": true
+        },
+        {
+          "name": "country_code",
+          "type": "STRING",
+          "length": 10,
+          "nullable": true
+        },
+        {
+          "name": "state_code",
+          "type": "STRING",
+          "length": 10,
+          "nullable": true
+        },
+        {
+          "name": "city",
+          "type": "STRING",
+          "length": 100,
+          "nullable": true
+        },
+        {
+          "name": "region",
+          "type": "STRING",
+          "length": 100,
+          "nullable": true
+        },
+        {
+          "name": "first_investment_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "last_investment_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "investment_rounds",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "invested_companies",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "first_funding_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "last_funding_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "funding_rounds",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "funding_total_usd",
+          "type": "FLOAT64",
+          "nullable": true
+        },
+        {
+          "name": "first_milestone_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "last_milestone_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "milestones",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "relationships",
+          "type": "INT64",
+          "nullable": true
+        },
+        {
+          "name": "created_by",
+          "type": "STRING",
+          "length": 100,
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        }
+      ],
+      "primaryKey": ["id"],
+      "indexes": []
+    },
+    {
+      "table": "Investment",
+      "schema": [
+        {
+          "name": "id",
+          "type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "funding_round_id",
+          "type": "STRING",
+          "nullable": false
+        },
+        {
+          "name": "funded_object_id",
+          "type": "STRING",
+          "length": 36,
+          "nullable": false
+        },
+        {
+          "name": "investor_object_id",
+          "type": "STRING",
+          "length": 36,
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": false
+        }
+      ],
+      "primaryKey": ["id"],
+      "foreignKeys": [
+        {
+          "name": "fk_funding_round_id",
+          "field": "funding_round_id",
+          "refTable": "FundingRound",
+          "refField": "id",
+          "onDelete": "CASCADE"
+        },
+        {
+          "name": "fk_funded_object_id",
+          "field": "funded_object_id",
+          "refTable": "Object",
+          "refField": "id",
+          "onDelete": "CASCADE"
+        }
+      ],
+      "indexes": []
+    },
+    {
+  "table": "FundingRound",
+  "schema": [
+    {
+      "name": "id",
+      "type": "STRING",
+      "nullable": false
+    },
+    {
+      "name": "funding_round_id",
+      "type": "STRING",
+      "nullable": false
+    },
+    {
+      "name": "object_id",
+      "type": "STRING",
+      "length": 36,
+      "nullable": false
+    },
+    {
+      "name": "funded_at",
+      "type": "TIMESTAMP",
+      "nullable": true
+    },
+    {
+      "name": "funding_round_type",
+      "type": "STRING",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "funding_round_code",
+      "type": "STRING",
+      "length": 50,
+      "nullable": true
+    },
+    {
+      "name": "raised_amount_usd",
+      "type": "FLOAT64",
+      "nullable": true
+    },
+    {
+      "name": "raised_amount",
+      "type": "FLOAT64",
+      "nullable": true
+    },
+    {
+      "name": "raised_currency_code",
+      "type": "STRING",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "pre_money_valuation_usd",
+      "type": "FLOAT64",
+      "nullable": true
+    },
+    {
+      "name": "pre_money_valuation",
+      "type": "FLOAT64",
+      "nullable": true
+    },
+    {
+      "name": "pre_money_currency_code",
+      "type": "STRING",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "post_money_valuation_usd",
+      "type": "FLOAT64",
+      "nullable": true
+    },
+    {
+      "name": "post_money_valuation",
+      "type": "FLOAT64",
+      "nullable": true
+    },
+    {
+      "name": "post_money_currency_code",
+      "type": "STRING",
+      "length": 10,
+      "nullable": true
+    },
+    {
+      "name": "participants",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "is_first_round",
+      "type": "BOOL",
+      "nullable": true
+    },
+    {
+      "name": "is_last_round",
+      "type": "BOOL",
+      "nullable": true
+    },
+    {
+      "name": "source_url",
+      "type": "STRING",
+      "length": 512,
+      "nullable": true
+    },
+    {
+      "name": "source_description",
+      "type": "STRING",
+      "nullable": true
+    },
+    {
+      "name": "created_by",
+      "type": "STRING",
+      "length": 100,
+      "nullable": true
+    },
+    {
+      "name": "created_at",
+      "type": "TIMESTAMP",
+      "nullable": true
+    },
+    {
+      "name": "updated_at",
+      "type": "TIMESTAMP",
+      "nullable": true
+    }
+  ],
+  "primaryKey": ["id"],
+  "indexes": []
+}
+
+  ]
+}
